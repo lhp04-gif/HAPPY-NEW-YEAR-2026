@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tết Bính Ngọ 2026 - Đại Cát Đại Lợi</title>
+    <meta name="theme-color" content="#5e0000">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-icon">🧧</div>
+            <h2 class="splash-title">XUÂN BÍNH NGỌ</h2>
+            <p class="splash-sub">Chạm để mở cửa đón lộc xuân</p>
+            <button id="enter-btn" class="btn-enter">GÕ CỬA VÀO NHÀ</button>
+        </div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="falling-petals">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="lantern-box lb-left">
+        <div class="lantern-string"></div>
+        <div class="lantern-body"><span>Tết</span></div>
+        <div class="lantern-tassel"></div>
+    </div>
+    <div class="lantern-box lb-right">
+        <div class="lantern-string"></div>
+        <div class="lantern-body"><span>Xuân</span></div>
+        <div class="lantern-tassel"></div>
+    </div>
+
+    <div class="couplet c-left"><span>Cung</span><span>Chúc</span><span>Tân</span><span>Xuân</span></div>
+    <div class="couplet c-right"><span>Vạn</span><span>Sự</span><span>Như</span><span>Ý</span></div>
+
+    <div class="firecracker-group fc-left">
+        <div class="fc-head"></div>
+        <div class="fc-body"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="fc-tail"></div>
+    </div>
+    <div class="firecracker-group fc-right">
+        <div class="fc-head"></div>
+        <div class="fc-body"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="fc-tail"></div>
+    </div>
+
+    <div class="full-frame">
+        <div class="frame-line f-top"></div><div class="frame-line f-bottom"></div>
+        <div class="frame-line f-left"></div><div class="frame-line f-right"></div>
+        <div class="frame-corner f-tl"></div><div class="frame-corner f-tr"></div>
+        <div class="frame-corner f-bl"></div><div class="frame-corner f-br"></div>
+    </div>
+
+    <div class="music-fab" id="music-btn" style="opacity:0">
+        <div class="music-waves"><span></span><span></span><span></span></div>
+        <audio id="audio" src="nhac-tet.mp3" loop playsinline></audio>
+    </div>
+
+    <nav class="mobile-nav">
+        <div class="logo">HAPPY NEW YEAR <span class="gold-text">2026</span></div>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="nav-overlay" id="nav-overlay">
+            <span class="close-nav" onclick="toggleMenu()">&times;</span>
+            <a href="#hero" onclick="toggleMenu()">Trang Chủ</a>
+            <a href="#games" onclick="toggleMenu()">Hội Xuân</a>
+            <a href="#card" onclick="toggleMenu()">Tạo Thiệp</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content" data-aos="zoom-in">
+            <div class="ornament-top"></div>
+            <h3>CHÚC MỪNG NĂM MỚI</h3>
+            <h1 class="glow-text">BÍNH NGỌ 2026</h1>
+            <p class="slogan">"An Khang Thịnh Vượng - Tấn Tài Tấn Lộc"</p>
+            <div class="countdown-mobile">
+                <div class="cd-unit"><span id="d">00</span><small>Ngày</small></div>
+                <div class="cd-unit"><span id="h">00</span><small>Giờ</small></div>
+                <div class="cd-unit"><span id="m">00</span><small>Phút</small></div>
+                <div class="cd-unit"><span id="s">00</span><small>Giây</small></div>
+            </div>
+            <a href="#games" class="btn-main pulse">HÁI LỘC NGAY</a>
+        </div>
+    </section>
+
+    <section id="games" class="section-pad">
+        <div class="container">
+            <h2 class="title-head">HỘI XUÂN ONLINE</h2>
+            
+            <div class="game-tabs">
+                <button class="g-btn active" onclick="setGame('xam')">Gieo Quẻ</button>
+                <button class="g-btn" onclick="setGame('lixi')">Hái Lộc</button>
+            </div>
+
+            <div id="game-xam" class="game-scene active">
+                <p class="guide-text">Chạm vào ống xăm để lắc (100 Quẻ Linh Nghiệm)</p>
+                <div class="shaker-container" onclick="shake()">
+                    <div class="tube" id="tube"><span>LỘC</span></div>
+                    <div class="stick" id="stick">Số 01</div>
+                </div>
+            </div>
+
+            <div id="game-lixi" class="game-scene">
+                <p class="guide-text">Bấm vào bao lì xì để nhận quà may mắn!</p>
+                <div class="lixi-grid" id="lixi-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="card" class="section-pad">
+        <div class="container">
+            <h2 class="title-head">TẠO THIỆP VIP</h2>
+            <div class="vip-maker-layout">
+                <div class="maker-controls">
+                    <div class="input-wrap">
+                        <label>Người nhận:</label>
+                        <input type="text" id="inp-name" placeholder="VD: Ba Mẹ, Vợ Yêu..." oninput="updateCardLive()">
+                    </div>
+                    <div class="input-wrap">
+                        <select id="cat-select" onchange="loadWishes()">
+                            <option value="family">Gia Đình</option>
+                            <option value="work">Công Việc</option>
+                            <option value="friend">Bạn Bè</option>
+                            <option value="love">Tình Yêu</option>
+                        </select>
+                    </div>
+                    <div class="input-wrap">
+                        <select id="wish-select" onchange="applyWish()">
+                            <option value="">-- Chọn câu chúc mẫu --</option>
+                        </select>
+                    </div>
+                    <div class="input-wrap">
+                        <label>Lời chúc:</label>
+                        <textarea id="inp-message" rows="3" oninput="updateCardLive()"></textarea>
+                    </div>
+                    <button class="btn-download-vip" onclick="downloadImg()">
+                        <i class="fas fa-download"></i> TẢI THIỆP VỀ
+                    </button>
+                </div>
+
+                <div class="maker-preview">
+                    <div class="vip-card" id="capture-target">
+                        <div class="card-texture"></div>
+                        <div class="card-border-outer"></div>
+                        <div class="card-border-inner"></div>
+                        <div class="corner c-tl"></div><div class="corner c-tr"></div>
+                        <div class="corner c-bl"></div><div class="corner c-br"></div>
+                        <div class="card-content-vip">
+                            <div class="vip-year">XUÂN BÍNH NGỌ 2026</div>
+                            <div class="vip-intro">Thân tặng:</div>
+                            <h1 id="live-name">TÊN NGƯỜI NHẬN</h1>
+                            <div class="vip-divider">♦</div>
+                            <p id="live-msg">"Chúc mừng năm mới. Vạn sự như ý."</p>
+                        </div>
+                        <div class="vip-footer">
+                            <div class="seal-box"><div class="seal-inner">TẾT</div></div>
+                            <div class="brand-sig"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="popup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <h3 id="pop-title">Thông Báo</h3>
+            <div class="pop-line"></div>
+            <p id="pop-msg">Nội dung...</p>
+            <button class="btn-main small" onclick="closePopup()">Đóng</button>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026</p></footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
